@@ -38,6 +38,9 @@ if (isset($_SESSION['username'])){
                             </div>
                         </form>
                     </div>
+                    <div class="d-flex justify-content-center">
+                        <p class="text-center">user: admin | password: admin</p>
+                    </div>
                     <div class="card-footer d-flex justify-content-end">
                         <button id="login" class="btn btn-success">Login</button>
                     </div>
@@ -78,6 +81,7 @@ if (isset($_SESSION['username'])){
                     <div class="d-flex justify-content-center">
                         <div id="alertRegister"></div>
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button id="register" class="btn btn-info text-end">Register</button>

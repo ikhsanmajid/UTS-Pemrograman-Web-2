@@ -80,9 +80,10 @@ async function getNews(title = '', category = '', page = 0) {
                 const wrapper = document.createElement('tr')
                 wrapper.innerHTML = [
                     `<td style="width: 5%">${i}</td>`,
-                    `<td style="width: 30%">${items['judul_berita']}</td>`,
+                    `<td style="width: 10%"><img style="width: 72px; height: 72px" src="${items['gambar_berita']}"/></td>`,
+                    `<td style="width: 25%">${items['judul_berita']}</td>`,
                     `<td style="width: 10%">${items['nama_kategori']}</td>`,
-                    `<td style="width: 25%">${items['tanggalpenulisan_berita']}</td>`,
+                    `<td style="width: 20%">${items['tanggalpenulisan_berita']}</td>`,
                     `<td style="width: 15%">${status_berita}</td>`,
                     `<td style="width: 15%"><button onclick="deleteBerita(${items['id_berita']})" class="btn btn-danger me-2">Hapus</button><button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalEditBerita" onclick="getEditBerita(${items['id_berita']})">Edit</button></td>`,
                 ].join('')

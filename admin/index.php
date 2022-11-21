@@ -56,6 +56,7 @@ if (!isset($_SESSION['username'])) {
                                     <thead>
                                         <tr>
                                             <th scope="col">No.</th>
+                                            <th scope="col">Preview Gambar</th>
                                             <th scope="col">Judul Berita</th>
                                             <th scope="col">Kategori</th>
                                             <th scope="col">Tanggal Penulisan</th>
