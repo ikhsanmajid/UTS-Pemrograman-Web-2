@@ -11,7 +11,7 @@ let kategoriBeritaList
 // let jumlahItem
 
 // NOTE fungsi GetNews & Filter & Search
-async function getNews(title = '', category = '', page = 0) {
+async function getNews(title = '', category = '') {
     let getNewsFetch
     if (title != '' && category == '') {
         getNewsFetch = await fetch('../include_file/api.php', {
@@ -19,7 +19,6 @@ async function getNews(title = '', category = '', page = 0) {
             body: JSON.stringify({
                 'method': 'getNewsAdm',
                 'title': title,
-                'page': page
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -31,7 +30,6 @@ async function getNews(title = '', category = '', page = 0) {
             body: JSON.stringify({
                 'method': 'getNewsAdm',
                 'category': category,
-                'page': page
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -44,7 +42,6 @@ async function getNews(title = '', category = '', page = 0) {
                 'method': 'getNewsAdm',
                 'title': title,
                 'category': category,
-                'page': page
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -55,7 +52,6 @@ async function getNews(title = '', category = '', page = 0) {
             method: 'POST',
             body: JSON.stringify({
                 'method': 'getNewsAdm',
-                'page': page
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -68,7 +64,7 @@ async function getNews(title = '', category = '', page = 0) {
         if (data['response'] == '404') {
             content.innerHTML = "<tr><td colspan=6>Berita tidak ada</td></tr>"
         } else {
-            let i = (10 * page) + 1;
+            let i = 1;
             content.innerHTML = ""
             data['data'].map(items => {
                 let status_berita

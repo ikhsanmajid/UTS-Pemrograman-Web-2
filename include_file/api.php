@@ -197,28 +197,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         else if ($data['method'] == 'getNewsAdm') {
             if ($_SESSION['level_user'] == 1) {
                 if (array_key_exists('title', $data) && !array_key_exists('category', $data)) {
-                    $query = "SELECT * FROM berita INNER JOIN kategori ON berita.kategori_berita=kategori.id_kategori WHERE judul_berita LIKE :title LIMIT :page, 10";
+                    $query = "SELECT * FROM berita INNER JOIN kategori ON berita.kategori_berita=kategori.id_kategori WHERE judul_berita LIKE :title";
                     $statement = $conn->prepare($query);
-                    $statement->bindValue(':page', ($data['page'] * 10), PDO::PARAM_INT);
                     $statement->bindValue(':title', '%' . $data['title'] . '%', PDO::PARAM_STR);
                     $statement->execute();
                 } else if (!array_key_exists('title', $data) && array_key_exists('category', $data)) {
-                    $query = "SELECT * FROM berita INNER JOIN kategori ON berita.kategori_berita=kategori.id_kategori WHERE kategori_berita = :category LIMIT :page, 10";
+                    $query = "SELECT * FROM berita INNER JOIN kategori ON berita.kategori_berita=kategori.id_kategori WHERE kategori_berita = :category";
                     $statement = $conn->prepare($query);
-                    $statement->bindValue(':page', ($data['page'] * 10), PDO::PARAM_INT);
                     $statement->bindValue(':category', $data['category'], PDO::PARAM_STR);
                     $statement->execute();
                 } else if (array_key_exists('title', $data) && array_key_exists('category', $data)) {
-                    $query = "SELECT * FROM berita INNER JOIN kategori ON berita.kategori_berita=kategori.id_kategori WHERE judul_berita LIKE :title AND kategori_berita = :category LIMIT :page, 10";
+                    $query = "SELECT * FROM berita INNER JOIN kategori ON berita.kategori_berita=kategori.id_kategori WHERE judul_berita LIKE :title AND kategori_berita = :category";
                     $statement = $conn->prepare($query);
-                    $statement->bindValue(':page', ($data['page'] * 10), PDO::PARAM_INT);
                     $statement->bindValue(':title', '%' . $data['title'] . '%', PDO::PARAM_STR);
                     $statement->bindValue(':category', $data['category'], PDO::PARAM_STR);
                     $statement->execute();
                 } else {
-                    $query = "SELECT * FROM berita INNER JOIN kategori ON berita.kategori_berita=kategori.id_kategori LIMIT :page, 10";
+                    $query = "SELECT * FROM berita INNER JOIN kategori ON berita.kategori_berita=kategori.id_kategori";
                     $statement = $conn->prepare($query);
-                    $statement->bindValue(':page', ($data['page'] * 10), PDO::PARAM_INT);
                     $statement->execute();
                 }
 
